@@ -16,14 +16,14 @@ Once you've done that, you can do the following:
 Both Minitest tests and RSpec specs will automatically generate 
 [Simplecov](https://github.com/colszowka/simplecov) coverage information.
 
-This kata starts from the version found at git@github.com:professor/GildedRose.git.
+This kata starts from the version found at https://github.com/professor/GildedRose.
 
 There are other versions of this kata for Ruby, as well as versions for other languages.
 
 The original versions of this kata do not have an explicit license that I can find.  This
 repo uses the MIT licenses for its additions and contributions.
 
-The original README from git@github.com:professor/GildedRose.git follows below.
+The original README from https://github.com/professor/GildedRose follows below.
 
 
 # Original README
