@@ -5,7 +5,16 @@ This is a version of the Gilded Rose kata with some initial setup for
 [Getting a Handle on Legacy Code workshop](http://railsconf.com/program/labs#prop_1024)
 at [RailsConf 2015](http://railsconf.com).
 
-To get started, clone and/or fork this repository and then run `bundle`.
+To prepare for the workshop, clone and/or fork this repository and then run `bundle`.
+
+Once you've done that, you can do the following:
+
+* Run Minitest tests with `rake test`
+* Run RSpec specs with `rake spec`
+* Run [flog](https://github.com/seattlerb/flog) against the code with `rake flog`
+
+Both Minitest tests and RSpec specs will automatically generate 
+[Simplecov](https://github.com/colszowka/simplecov) coverage information.
 
 This kata starts from the version found at git@github.com:professor/GildedRose.git.
 
