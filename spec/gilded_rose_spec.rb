@@ -1,4 +1,4 @@
-require './gilded_rose'
+require 'gilded_rose'
 
 RSpec.describe GildedRose do
 
