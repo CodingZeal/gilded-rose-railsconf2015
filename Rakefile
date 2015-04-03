@@ -13,3 +13,7 @@ begin
   RSpec::Core::RakeTask.new(:spec)
 rescue LoadError
 end
+
+task :flog do
+  sh 'flog -a lib'
+end
