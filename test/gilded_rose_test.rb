@@ -1,5 +1,4 @@
-require_relative 'test_helper'
-require_relative '../lib/gilded_rose'
+require_relative 'helper'
 
 class GildedRoseTest < Minitest::Test
   def setup

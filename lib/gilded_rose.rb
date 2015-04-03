@@ -1,1 +1,1 @@
-require_relative 'gilded_rose/gilded_rose'
+require 'gilded_rose/gilded_rose'
