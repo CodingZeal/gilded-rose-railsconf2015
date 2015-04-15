@@ -9,9 +9,9 @@ To prepare for the workshop, clone and/or fork this repository and then run `bun
 
 Once you've done that, you can do the following:
 
-* Run Minitest tests with `rake test`
-* Run RSpec specs with `rake spec`
-* Run [flog](https://github.com/seattlerb/flog) against the code with `rake flog`
+* Run Minitest tests with `bundle exec rake test`
+* Run RSpec specs with `bundle exec rake spec`
+* Run [flog](https://github.com/seattlerb/flog) against the code with `bundle exec rake flog`
 
 Both Minitest tests and RSpec specs will automatically generate 
 [Simplecov](https://github.com/colszowka/simplecov) coverage information.
