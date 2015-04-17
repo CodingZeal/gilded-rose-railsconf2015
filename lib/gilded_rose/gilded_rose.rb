@@ -13,47 +13,47 @@ class GildedRose
 
   def update_quality
 
-    for i in 0..@items.size-1
-      if @items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert"
-        if @items[i].quality > 0
-          if @items[i].name != "Sulfuras, Hand of Ragnaros"
-            @items[i].quality -= 1
+    @items.each do |item|
+      if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"
+        if item.quality > 0
+          if item.name != "Sulfuras, Hand of Ragnaros"
+            item.quality -= 1
           end
         end
       else
-        if @items[i].quality < 50
-          @items[i].quality += 1
-          if @items[i].name == "Backstage passes to a TAFKAL80ETC concert"
-            if @items[i].sell_in < 11
-              if @items[i].quality < 50
-                @items[i].quality += 1
+        if item.quality < 50
+          item.quality += 1
+          if item.name == "Backstage passes to a TAFKAL80ETC concert"
+            if item.sell_in < 11
+              if item.quality < 50
+                item.quality += 1
               end
             end
-            if @items[i].sell_in < 6
-              if @items[i].quality < 50
-                @items[i].quality += 1
+            if item.sell_in < 6
+              if item.quality < 50
+                item.quality += 1
               end
             end
           end
         end
       end
-      if @items[i].name != "Sulfuras, Hand of Ragnaros"
-        @items[i].sell_in -= 1
+      if item.name != "Sulfuras, Hand of Ragnaros"
+        item.sell_in -= 1
       end
-      if @items[i].sell_in < 0
-        if @items[i].name != "Aged Brie"
-          if @items[i].name != "Backstage passes to a TAFKAL80ETC concert"
-            if @items[i].quality > 0
-              if @items[i].name != "Sulfuras, Hand of Ragnaros"
-                @items[i].quality -= 1
+      if item.sell_in < 0
+        if item.name != "Aged Brie"
+          if item.name != "Backstage passes to a TAFKAL80ETC concert"
+            if item.quality > 0
+              if item.name != "Sulfuras, Hand of Ragnaros"
+                item.quality -= 1
               end
             end
           else
-            @items[i].quality = 0
+            item.quality = 0
           end
         else
-          if @items[i].quality < 50
-            @items[i].quality += 1
+          if item.quality < 50
+            item.quality += 1
           end
         end
       end
