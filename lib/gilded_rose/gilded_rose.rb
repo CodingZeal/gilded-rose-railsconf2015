@@ -18,6 +18,15 @@ class GildedRose
   end
 
   def update_item(item)
+    if item.name == "Conjured Mana Cake"
+      item.sell_in -= 1
+      2.times { decrease_quality(item) }
+      if item.sell_in < 0
+        2.times { decrease_quality(item) }
+      end
+      return
+    end
+
     if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"
       if item.name != "Sulfuras, Hand of Ragnaros"
         decrease_quality(item)
