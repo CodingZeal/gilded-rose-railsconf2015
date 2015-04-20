@@ -56,7 +56,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  approvals (~> 0.0.18)
+  approvals (= 0.0.18)
   flog
   minitest (~> 5.0)
   minitest-rg
