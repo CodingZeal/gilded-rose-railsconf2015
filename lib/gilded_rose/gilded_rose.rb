@@ -30,12 +30,10 @@ class WrappedItem < SimpleDelegator
     if expired?
       if name == AGED_BRIE
         self.quality += 1
+      elsif name == BACKSTAGE_PASSES
+        self.quality = 0
       else
-        if name == BACKSTAGE_PASSES
-          self.quality = 0
-        else
-          self.quality -= 1
-        end
+        self.quality -= 1
       end
     end
   end
