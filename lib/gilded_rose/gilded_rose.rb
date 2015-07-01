@@ -20,7 +20,7 @@ class GildedRose
       if current_item.name != "Aged Brie" && current_item.name != "Backstage passes to a TAFKAL80ETC concert"
         if current_item.quality > 0
           if current_item.name != "Sulfuras, Hand of Ragnaros"
-            current_item.quality = current_item.quality - 1
+            current_item.quality -= 1
           end
         end
       else
@@ -29,34 +29,34 @@ class GildedRose
           if current_item.name == "Backstage passes to a TAFKAL80ETC concert"
             if current_item.sell_in < 11
               if current_item.quality < 50
-                current_item.quality = current_item.quality + 1
+                current_item.quality += 1
               end
             end
             if current_item.sell_in < 6
               if current_item.quality < 50
-                current_item.quality = current_item.quality + 1
+                current_item.quality += 1
               end
             end
           end
         end
       end
       if current_item.name != "Sulfuras, Hand of Ragnaros"
-        current_item.sell_in = current_item.sell_in - 1
+        current_item.sell_in -= 1
       end
       if current_item.sell_in < 0
         if current_item.name != "Aged Brie"
           if current_item.name != "Backstage passes to a TAFKAL80ETC concert"
             if current_item.quality > 0
               if current_item.name != "Sulfuras, Hand of Ragnaros"
-                current_item.quality = current_item.quality - 1
+                current_item.quality -= 1
               end
             end
           else
-            current_item.quality = current_item.quality - current_item.quality
+            current_item.quality -= current_item.quality
           end
         else
           if current_item.quality < 50
-            current_item.quality = current_item.quality + 1
+            current_item.quality += 1
           end
         end
       end
