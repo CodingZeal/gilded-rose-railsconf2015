@@ -1,0 +1,6 @@
+[0] "+5 Dexterity Vest: quality: 0 sell_in: -7"
+[1] "Aged Brie: quality: 32 sell_in: -15"
+[2] "Elixir of the Mongoose: quality: 0 sell_in: -12"
+[3] "Sulfuras, Hand of Ragnaros: quality: 80 sell_in: 0"
+[4] "Backstage passes to a TAFKAL80ETC concert: quality: 0 sell_in: -2"
+[5] "Conjured Mana Cake: quality: 0 sell_in: -14"
