@@ -7,13 +7,16 @@ class WrappedItem < SimpleDelegator
   SULFURAS = "Sulfuras, Hand of Ragnaros"
 
   def update
+    unless legendary?
+      self.sell_in -= 1
+    end
     if name == AGED_BRIE || name == BACKSTAGE_PASSES
       self.quality += 1
       if name == BACKSTAGE_PASSES
-        if sell_in < 11
+        if sell_in < 10
           self.quality += 1
         end
-        if sell_in < 6
+        if sell_in < 5
           self.quality += 1
         end
       end
@@ -21,9 +24,6 @@ class WrappedItem < SimpleDelegator
       unless legendary?
         self.quality -= 1
       end
-    end
-    unless legendary?
-      self.sell_in -= 1
     end
     if expired?
       if name == AGED_BRIE
