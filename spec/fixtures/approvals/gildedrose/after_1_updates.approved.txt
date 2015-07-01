@@ -3,4 +3,4 @@
 [2] "Elixir of the Mongoose: quality: 6 sell_in: 4"
 [3] "Sulfuras, Hand of Ragnaros: quality: 80 sell_in: 0"
 [4] "Backstage passes to a TAFKAL80ETC concert: quality: 21 sell_in: 14"
-[5] "Conjured Mana Cake: quality: 5 sell_in: 2"
+[5] "Conjured Mana Cake: quality: 4 sell_in: 2"
