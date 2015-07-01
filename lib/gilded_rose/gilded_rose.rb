@@ -6,9 +6,16 @@ class WrappedItem < SimpleDelegator
   AGED_BRIE = "Aged Brie"
   SULFURAS = "Sulfuras, Hand of Ragnaros"
 
-  def update
-    return if legendary?
+  def self.wrap(item)
+    case item.name
+      when /Sulfuras/
+        LegendaryItem.new(item)
+      else
+        new(item)
+    end
+  end
 
+  def update
     make_older
     adjust_quality
   end
@@ -45,12 +52,14 @@ class WrappedItem < SimpleDelegator
     super(new_quality)
   end
 
-  def legendary?
-    name == SULFURAS
-  end
-
   def expired?
     sell_in < 0
+  end
+end
+
+class LegendaryItem < WrappedItem
+  def update
+    # Nothing to do
   end
 end
 
@@ -69,6 +78,6 @@ class GildedRose
   end
 
   def update_quality
-    @items.each { |item| WrappedItem.new(item).update }
+    @items.each { |item| WrappedItem.wrap(item).update }
   end
 end
