@@ -14,15 +14,15 @@ class WrappedItem < SimpleDelegator
   end
 
   def adjust_quality
-    if name == AGED_BRIE || name == BACKSTAGE_PASSES
+    if name == AGED_BRIE
       self.quality += 1
-      if name == BACKSTAGE_PASSES
-        if sell_in < 10
-          self.quality += 1
-        end
-        if sell_in < 5
-          self.quality += 1
-        end
+    elsif name == BACKSTAGE_PASSES
+      self.quality += 1
+      if sell_in < 10
+        self.quality += 1
+      end
+      if sell_in < 5
+        self.quality += 1
       end
     else
       self.quality -= 1
