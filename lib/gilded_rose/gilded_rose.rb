@@ -14,6 +14,10 @@ class WrappedItem < SimpleDelegator
   end
 
   def adjust_quality
+    self.quality += quality_adjustment
+  end
+
+  def quality_adjustment
     quality_adjustment = 0
     if name == AGED_BRIE
       quality_adjustment += 1
@@ -31,7 +35,7 @@ class WrappedItem < SimpleDelegator
       quality_adjustment -= 1
       quality_adjustment -= 1 if expired?
     end
-    self.quality += quality_adjustment
+    quality_adjustment
   end
 
   def make_older
