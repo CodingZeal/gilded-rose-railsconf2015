@@ -18,14 +18,10 @@ class WrappedItem < SimpleDelegator
         self.quality += 1
         if name == BACKSTAGE_PASSES
           if sell_in < 11
-            if quality < 50
-              self.quality += 1
-            end
+            increment_quality
           end
           if sell_in < 6
-            if quality < 50
-              self.quality += 1
-            end
+            increment_quality
           end
         end
       end
@@ -45,10 +41,14 @@ class WrappedItem < SimpleDelegator
           self.quality -= quality
         end
       else
-        if quality < 50
-          self.quality += 1
-        end
+        increment_quality
       end
+    end
+  end
+
+  def increment_quality
+    if quality < 50
+      self.quality += 1
     end
   end
 
