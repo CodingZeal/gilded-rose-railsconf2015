@@ -19,49 +19,50 @@ class GildedRose
   end
 
   def update_quality
+    @items.each { |item| update_item(item) }
+  end
 
-    @items.each do |current_item|
-      if current_item.name != AGED_BRIE && current_item.name != BACKSTAGE_PASSES
-        if current_item.quality > 0
-          if current_item.name != SULFURAS
-            current_item.quality -= 1
+  def update_item(current_item)
+    if current_item.name != AGED_BRIE && current_item.name != BACKSTAGE_PASSES
+      if current_item.quality > 0
+        if current_item.name != SULFURAS
+          current_item.quality -= 1
+        end
+      end
+    else
+      if current_item.quality < 50
+        current_item.quality += 1
+        if current_item.name == BACKSTAGE_PASSES
+          if current_item.sell_in < 11
+            if current_item.quality < 50
+              current_item.quality += 1
+            end
           end
+          if current_item.sell_in < 6
+            if current_item.quality < 50
+              current_item.quality += 1
+            end
+          end
+        end
+      end
+    end
+    if current_item.name != SULFURAS
+      current_item.sell_in -= 1
+    end
+    if current_item.sell_in < 0
+      if current_item.name != AGED_BRIE
+        if current_item.name != BACKSTAGE_PASSES
+          if current_item.quality > 0
+            if current_item.name != SULFURAS
+              current_item.quality -= 1
+            end
+          end
+        else
+          current_item.quality -= current_item.quality
         end
       else
         if current_item.quality < 50
           current_item.quality += 1
-          if current_item.name == BACKSTAGE_PASSES
-            if current_item.sell_in < 11
-              if current_item.quality < 50
-                current_item.quality += 1
-              end
-            end
-            if current_item.sell_in < 6
-              if current_item.quality < 50
-                current_item.quality += 1
-              end
-            end
-          end
-        end
-      end
-      if current_item.name != SULFURAS
-        current_item.sell_in -= 1
-      end
-      if current_item.sell_in < 0
-        if current_item.name != AGED_BRIE
-          if current_item.name != BACKSTAGE_PASSES
-            if current_item.quality > 0
-              if current_item.name != SULFURAS
-                current_item.quality -= 1
-              end
-            end
-          else
-            current_item.quality -= current_item.quality
-          end
-        else
-          if current_item.quality < 50
-            current_item.quality += 1
-          end
         end
       end
     end
