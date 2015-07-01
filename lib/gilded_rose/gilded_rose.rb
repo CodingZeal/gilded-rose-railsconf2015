@@ -7,47 +7,46 @@ class WrappedItem < SimpleDelegator
   SULFURAS = "Sulfuras, Hand of Ragnaros"
 
   def update
-    current_item = self
-    if current_item.name != AGED_BRIE && current_item.name != BACKSTAGE_PASSES
-      if current_item.quality > 0
-        if current_item.name != SULFURAS
-          current_item.quality -= 1
+    if name != AGED_BRIE && name != BACKSTAGE_PASSES
+      if quality > 0
+        if name != SULFURAS
+          self.quality -= 1
         end
       end
     else
-      if current_item.quality < 50
-        current_item.quality += 1
-        if current_item.name == BACKSTAGE_PASSES
-          if current_item.sell_in < 11
-            if current_item.quality < 50
-              current_item.quality += 1
+      if quality < 50
+        self.quality += 1
+        if name == BACKSTAGE_PASSES
+          if sell_in < 11
+            if quality < 50
+              self.quality += 1
             end
           end
-          if current_item.sell_in < 6
-            if current_item.quality < 50
-              current_item.quality += 1
+          if sell_in < 6
+            if quality < 50
+              self.quality += 1
             end
           end
         end
       end
     end
-    if current_item.name != SULFURAS
-      current_item.sell_in -= 1
+    if name != SULFURAS
+      self.sell_in -= 1
     end
-    if current_item.expired?
-      if current_item.name != AGED_BRIE
-        if current_item.name != BACKSTAGE_PASSES
-          if current_item.quality > 0
-            if current_item.name != SULFURAS
-              current_item.quality -= 1
+    if expired?
+      if name != AGED_BRIE
+        if name != BACKSTAGE_PASSES
+          if quality > 0
+            if name != SULFURAS
+              self.quality -= 1
             end
           end
         else
-          current_item.quality -= current_item.quality
+          self.quality -= quality
         end
       else
-        if current_item.quality < 50
-          current_item.quality += 1
+        if quality < 50
+          self.quality += 1
         end
       end
     end
