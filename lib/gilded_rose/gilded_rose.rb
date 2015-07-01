@@ -8,7 +8,7 @@ class WrappedItem < SimpleDelegator
 
   def update
     if name != AGED_BRIE && name != BACKSTAGE_PASSES
-      if name != SULFURAS
+      unless legendary?
         self.quality -= 1
       end
     else
@@ -22,13 +22,13 @@ class WrappedItem < SimpleDelegator
         end
       end
     end
-    if name != SULFURAS
+    unless legendary?
       self.sell_in -= 1
     end
     if expired?
       if name != AGED_BRIE
         if name != BACKSTAGE_PASSES
-          if name != SULFURAS
+          unless legendary?
             self.quality -= 1
           end
         else
@@ -44,6 +44,10 @@ class WrappedItem < SimpleDelegator
     new_quality = 50 if new_quality > 50
     new_quality = 0 if new_quality < 0
     super(new_quality)
+  end
+
+  def legendary?
+    name == SULFURAS
   end
 
   def expired?
