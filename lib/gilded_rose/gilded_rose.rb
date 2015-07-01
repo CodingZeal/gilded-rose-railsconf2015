@@ -34,7 +34,7 @@ class WrappedItem < SimpleDelegator
             self.quality -= 1
           end
         else
-          self.quality -= quality
+          self.quality = 0
         end
       else
         self.quality += 1
@@ -45,7 +45,7 @@ class WrappedItem < SimpleDelegator
   def quality=(new_quality)
     new_quality = 50 if new_quality > 50
     new_quality = 0 if new_quality < 0
-    super
+    super(new_quality)
   end
 
   def expired?
