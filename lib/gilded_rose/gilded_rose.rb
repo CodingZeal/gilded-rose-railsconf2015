@@ -14,22 +14,24 @@ class WrappedItem < SimpleDelegator
   end
 
   def adjust_quality
+    quality_adjustment = 0
     if name == AGED_BRIE
-      self.quality += 1
-      self.quality += 1 if expired?
+      quality_adjustment += 1
+      quality_adjustment += 1 if expired?
     elsif name == BACKSTAGE_PASSES
-      self.quality += 1
+      quality_adjustment += 1
       if sell_in < 10
-        self.quality += 1
+        quality_adjustment += 1
       end
       if sell_in < 5
-        self.quality += 1
+        quality_adjustment += 1
       end
-      self.quality = 0 if expired?
+      quality_adjustment = -quality if expired?
     else
-      self.quality -= 1
-      self.quality -= 1 if expired?
+      quality_adjustment -= 1
+      quality_adjustment -= 1 if expired?
     end
+    self.quality += quality_adjustment
   end
 
   def make_older
