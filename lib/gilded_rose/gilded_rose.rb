@@ -16,8 +16,7 @@ class GildedRose
 
   def update_quality
 
-    for i in 0..@items.size-1
-      current_item = @items[i]
+    @items.each do |current_item|
       if current_item.name != "Aged Brie" && current_item.name != "Backstage passes to a TAFKAL80ETC concert"
         if current_item.quality > 0
           if current_item.name != "Sulfuras, Hand of Ragnaros"
