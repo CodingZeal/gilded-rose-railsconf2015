@@ -8,8 +8,8 @@ class WrappedItem < SimpleDelegator
 
   def update
     if name != AGED_BRIE && name != BACKSTAGE_PASSES
-      if quality > 0
-        if name != SULFURAS
+      if name != SULFURAS
+        if quality > 0
           self.quality -= 1
         end
       end
@@ -32,8 +32,8 @@ class WrappedItem < SimpleDelegator
     if expired?
       if name != AGED_BRIE
         if name != BACKSTAGE_PASSES
-          if quality > 0
-            if name != SULFURAS
+          if name != SULFURAS
+            if quality > 0
               self.quality -= 1
             end
           end
