@@ -9,17 +9,17 @@ class WrappedItem < SimpleDelegator
   def update
     if name != AGED_BRIE && name != BACKSTAGE_PASSES
       if name != SULFURAS
-        decrement_quality
+        self.quality -= 1
       end
     else
       if quality < 50
         self.quality += 1
         if name == BACKSTAGE_PASSES
           if sell_in < 11
-            increment_quality
+            self.quality += 1
           end
           if sell_in < 6
-            increment_quality
+            self.quality += 1
           end
         end
       end
@@ -31,23 +31,15 @@ class WrappedItem < SimpleDelegator
       if name != AGED_BRIE
         if name != BACKSTAGE_PASSES
           if name != SULFURAS
-            decrement_quality
+            self.quality -= 1
           end
         else
           self.quality -= quality
         end
       else
-        increment_quality
+        self.quality += 1
       end
     end
-  end
-
-  def decrement_quality
-    self.quality -= 1
-  end
-
-  def increment_quality
-    self.quality += 1
   end
 
   def quality=(new_quality)
