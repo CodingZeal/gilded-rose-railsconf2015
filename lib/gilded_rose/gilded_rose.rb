@@ -8,6 +8,10 @@ class WrappedItem < SimpleDelegator
 
   def self.wrap(item)
     case item.name
+      when /Aged Brie/
+        AgedBrie.new(item)
+      when /Backstage passes/
+        BackstagePasses.new(item)
       when /Sulfuras/
         LegendaryItem.new(item)
       else
@@ -25,21 +29,7 @@ class WrappedItem < SimpleDelegator
   end
 
   def quality_adjustment
-    if name == AGED_BRIE
-      expired? ? 2 : 1
-    elsif name == BACKSTAGE_PASSES
-      if expired?
-        -quality
-      elsif sell_in < 5
-        3
-      elsif sell_in < 10
-        2
-      else
-        1
-      end
-    else
-      expired? ? -2 : -1
-    end
+    expired? ? -2 : -1
   end
 
   def make_older
@@ -54,6 +44,26 @@ class WrappedItem < SimpleDelegator
 
   def expired?
     sell_in < 0
+  end
+end
+
+class AgedBrie < WrappedItem
+  def quality_adjustment
+    expired? ? 2 : 1
+  end
+end
+
+class BackstagePasses < WrappedItem
+  def quality_adjustment
+    if expired?
+      -quality
+    elsif sell_in < 5
+      3
+    elsif sell_in < 10
+      2
+    else
+      1
+    end
   end
 end
 
