@@ -2,10 +2,6 @@ require_relative 'item'
 require 'delegate'
 
 class WrappedItem < SimpleDelegator
-  BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
-  AGED_BRIE = "Aged Brie"
-  SULFURAS = "Sulfuras, Hand of Ragnaros"
-
   def self.wrap(item)
     case item.name
       when /Aged Brie/
