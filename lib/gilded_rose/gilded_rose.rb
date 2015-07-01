@@ -12,15 +12,13 @@ class WrappedItem < SimpleDelegator
         self.quality -= 1
       end
     else
-      if quality < 50
-        self.quality += 1
-        if name == BACKSTAGE_PASSES
-          if sell_in < 11
-            self.quality += 1
-          end
-          if sell_in < 6
-            self.quality += 1
-          end
+      self.quality += 1
+      if name == BACKSTAGE_PASSES
+        if sell_in < 11
+          self.quality += 1
+        end
+        if sell_in < 6
+          self.quality += 1
         end
       end
     end
