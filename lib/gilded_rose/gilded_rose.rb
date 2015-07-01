@@ -1,4 +1,11 @@
 require_relative 'item'
+require 'delegate'
+
+class WrappedItem < SimpleDelegator
+  def expired?
+    sell_in < 0
+  end
+end
 
 class GildedRose
 
@@ -19,7 +26,7 @@ class GildedRose
   end
 
   def update_quality
-    @items.each { |item| update_item(item) }
+    @items.each { |item| update_item(WrappedItem.new(item)) }
   end
 
   def update_item(current_item)
@@ -49,7 +56,7 @@ class GildedRose
     if current_item.name != SULFURAS
       current_item.sell_in -= 1
     end
-    if current_item.sell_in < 0
+    if current_item.expired?
       if current_item.name != AGED_BRIE
         if current_item.name != BACKSTAGE_PASSES
           if current_item.quality > 0
