@@ -5,7 +5,7 @@ This is a version of the Gilded Rose kata with some initial setup for
 [Getting a Handle on Legacy Code workshop](http://railsconf.com/program/labs#prop_1024)
 at [RailsConf 2015](http://railsconf.com) and other variants presented in other venues.
 
-To prepare for the workshop, you can use a pre-configured workstation on [nitrous.io](https://www.nitrous.io/) by clicking on the Nitrous Quickstart button.  You will need to create a free account on nitrous.io to use this option.
+To prepare for the workshop, you can use a pre-configured workstation on [nitrous.io](https://www.nitrous.io/) by clicking on the Nitrous Quickstart button.  You will need to create a free account on nitrous.io to use this option.  The Quickstart is currently set up to use the `sou` branch for an upcoming workshop I'm giving.
 
 [![Nitrous Quickstart](https://nitrous-image-icons.s3.amazonaws.com/quickstart.svg)](https://www.nitrous.io/quickstart)
 
