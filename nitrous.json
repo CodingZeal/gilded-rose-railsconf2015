@@ -1,0 +1,8 @@
+{
+  "template": "ruby",
+  "name": "SOU Refactoring Workshop",
+  "scripts": {
+    "Run tests": "bundle exec rake spec",
+    "Check code quality": "bundle exec rake flog"
+  }
+}

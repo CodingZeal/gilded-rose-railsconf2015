@@ -1,11 +1,15 @@
 # The Gilded Rose Kata
 
-This is a version of the Gilded Rose kata with some initial setup for 
-[Randy Coulman](http://randycoulman.com/)'s 
+This is a version of the Gilded Rose kata with some initial setup for
+[Randy Coulman](http://randycoulman.com/)'s
 [Getting a Handle on Legacy Code workshop](http://railsconf.com/program/labs#prop_1024)
-at [RailsConf 2015](http://railsconf.com).
+at [RailsConf 2015](http://railsconf.com) and other variants presented in other venues.
 
-To prepare for the workshop, clone and/or fork this repository and then run `bundle`.
+To prepare for the workshop, you can use a pre-configured workstation on [nitrous.io](https://www.nitrous.io/) by clicking on the Nitrous Quickstart button.  You will need to create a free account on nitrous.io to use this option.
+
+[![Nitrous Quickstart](https://nitrous-image-icons.s3.amazonaws.com/quickstart.svg)](https://www.nitrous.io/quickstart)
+
+If you prefer to work on your own workstation, clone and/or fork this repository and then run `bundle`.
 
 Once you've done that, you can do the following:
 
@@ -13,7 +17,7 @@ Once you've done that, you can do the following:
 * Run RSpec specs with `bundle exec rake spec`
 * Run [flog](https://github.com/seattlerb/flog) against the code with `bundle exec rake flog`
 
-Both Minitest tests and RSpec specs will automatically generate 
+Both Minitest tests and RSpec specs will automatically generate
 [Simplecov](https://github.com/colszowka/simplecov) coverage information.
 
 This kata starts from the version found at https://github.com/professor/GildedRose.
