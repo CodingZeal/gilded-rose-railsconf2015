@@ -1,4 +1,56 @@
 require_relative 'item'
+require 'delegate'
+
+class WrappedItem < SimpleDelegator
+  def update
+    return if name == "Sulfuras, Hand of Ragnaros"
+
+    make_older
+    adjust_quality
+  end
+
+  def make_older
+    self.sell_in -= 1
+  end
+
+  def adjust_quality
+    case name
+    when "Aged Brie"
+      increment_quality
+      if sell_in < 0
+        increment_quality
+      end
+    when /Backstage passes/
+      increment_quality
+      if sell_in < 10
+        increment_quality
+      end
+      if sell_in < 5
+        increment_quality
+      end
+      if sell_in < 0
+        self.quality -= quality
+      end
+    else
+      decrement_quality
+      if sell_in < 0
+        decrement_quality
+      end
+    end
+  end
+
+  def decrement_quality
+    if quality > 0
+      self.quality -= 1
+    end
+  end
+
+  def increment_quality
+    if quality < 50
+      self.quality += 1
+    end
+  end
+end
 
 class GildedRose
 
@@ -15,52 +67,8 @@ class GildedRose
   end
 
   def update_quality
-
-    for i in 0..(@items.size-1)
-      if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert")
-        if (@items[i].quality > 0)
-          if (@items[i].name != "Sulfuras, Hand of Ragnaros")
-            @items[i].quality = @items[i].quality - 1
-          end
-        end
-      else
-        if (@items[i].quality < 50)
-          @items[i].quality = @items[i].quality + 1
-          if (@items[i].name == "Backstage passes to a TAFKAL80ETC concert")
-            if (@items[i].sell_in < 11)
-              if (@items[i].quality < 50)
-                @items[i].quality = @items[i].quality + 1
-              end
-            end
-            if (@items[i].sell_in < 6)
-              if (@items[i].quality < 50)
-                @items[i].quality = @items[i].quality + 1
-              end
-            end
-          end
-        end
-      end
-      if (@items[i].name != "Sulfuras, Hand of Ragnaros")
-        @items[i].sell_in = @items[i].sell_in - 1;
-      end
-      if (@items[i].sell_in < 0)
-        if (@items[i].name != "Aged Brie")
-          if (@items[i].name != "Backstage passes to a TAFKAL80ETC concert")
-            if (@items[i].quality > 0)
-              if (@items[i].name != "Sulfuras, Hand of Ragnaros")
-                @items[i].quality = @items[i].quality - 1
-              end
-            end
-          else
-            @items[i].quality = @items[i].quality - @items[i].quality
-          end
-        else
-          if (@items[i].quality < 50)
-            @items[i].quality = @items[i].quality + 1
-          end
-        end
-      end
+    @items.each do |item|
+      WrappedItem.new(item).update
     end
   end
-
 end
