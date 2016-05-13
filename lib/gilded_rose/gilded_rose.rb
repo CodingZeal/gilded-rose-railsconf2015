@@ -2,6 +2,17 @@ require_relative 'item'
 require 'delegate'
 
 class WrappedItem < SimpleDelegator
+  def self.wrap(item)
+    case item.name
+      when "Aged Brie"
+        AgedBrie.new(item)
+      when /Conjured/
+        ConjuredItem.new(item)
+      else
+        new(item)
+    end
+  end
+
   def update
     return if name == "Sulfuras, Hand of Ragnaros"
 
@@ -14,41 +25,45 @@ class WrappedItem < SimpleDelegator
   end
 
   def adjust_quality
+    self.quality += quality_adjustment
+  end
+
+  def quality_adjustment
     case name
-    when "Aged Brie"
-      increment_quality
-      if sell_in < 0
-        increment_quality
-      end
-    when /Backstage passes/
-      increment_quality
-      if sell_in < 10
-        increment_quality
-      end
-      if sell_in < 5
-        increment_quality
-      end
-      if sell_in < 0
-        self.quality -= quality
-      end
-    else
-      decrement_quality
-      if sell_in < 0
-        decrement_quality
-      end
+      when /Backstage passes/
+        adjustment = 0
+        adjustment += 1
+        if sell_in < 10
+          adjustment += 1
+        end
+        if sell_in < 5
+          adjustment += 1
+        end
+        if sell_in < 0
+          adjustment = -quality
+        end
+        return adjustment
+      else
+        return sell_in < 0 ? -2 : -1
     end
   end
 
-  def decrement_quality
-    if quality > 0
-      self.quality -= 1
-    end
+  def quality=(value)
+    new_value = [0, value].max
+    new_value = [new_value, 50].min
+    super(new_value)
   end
+end
 
-  def increment_quality
-    if quality < 50
-      self.quality += 1
-    end
+class AgedBrie < WrappedItem
+  def quality_adjustment
+    sell_in < 0 ? 2 : 1
+  end
+end
+
+class ConjuredItem < WrappedItem
+  def quality_adjustment
+    sell_in < 0 ? -4 : -2
   end
 end
 
@@ -68,7 +83,7 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      WrappedItem.new(item).update
+      WrappedItem.wrap(item).update
     end
   end
 end
