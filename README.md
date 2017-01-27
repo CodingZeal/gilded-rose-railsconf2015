@@ -7,7 +7,7 @@ at [RailsConf 2015](http://railsconf.com) and other variants presented in other 
 
 To prepare for the workshop, you can use a pre-configured workstation on [nitrous.io](https://www.nitrous.io/) by clicking on the Nitrous Quickstart button.  You will need to create a free account on nitrous.io to use this option.  The Quickstart is currently set up to use the `sou` branch for an upcoming workshop I'm giving.
 
-[![Nitrous Quickstart](https://nitrous-image-icons.s3.amazonaws.com/quickstart.svg)](https://www.nitrous.io/quickstart)
+[Nitrous Quickstart](https://www.nitrous.io/quickstart)
 
 If you prefer to work on your own workstation, clone and/or fork this repository and then run `bundle`.
 
@@ -88,3 +88,10 @@ however "Sulfuras" is a legendary item and as such its Quality is 80 and it
 never alters.
 
 Source: <http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/>
+
+
+## License
+
+Authored by Randy Coulman (Sr. Software Engineer) at [Coding ZEAL](https://codingzeal.com?utm_source=github)
+
+Copyright (c) 2017 Zeal, LLC.  Licensed under the [MIT license](https://opensource.org/licenses/MIT).
